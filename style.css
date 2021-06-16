@@ -212,7 +212,7 @@ list-item {
 }
 about-me {
     display: flex;
-    max-width: 720;
+    max-width: 720px;
     box-sizing: border-box;
     background-color: white;
     padding: 50px;
