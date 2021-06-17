@@ -22,9 +22,13 @@ intro {
     padding: 25px 50px;
     box-sizing: border-box;
 }
+intro {
+    color: var(--background-text);
+}
 article {
     background-color: white;
     position: relative;
+    border-radius: 0px 0px 5px 5px;
 }
 header-image {
     display: block;
@@ -136,6 +140,7 @@ reference.opened dropout{
     display: block;
     color:var(--base-color);
     background-color: var(--background-color);
+    border-radius: 5px;
 }
 reference.opened dropout a {
     text-decoration: underline;
@@ -217,6 +222,12 @@ about-me {
     background-color: white;
     padding: 50px;
     margin: 50px auto;
+    border-radius: 5px;
+}
+@media (max-width: 499px) {
+    about-me {
+        flex-direction: column;
+    }
 }
 about-me portrait {
     height: 100px;
@@ -226,6 +237,7 @@ about-me portrait {
     float: left;
     border-radius: 50%;
     margin-right: 25px;
+    margin-bottom: 25px;
     flex-grow: 0;
     flex-shrink: 0;
 }
@@ -246,6 +258,7 @@ about-me name {
 button {
     background: none;
     border: none;
+    cursor: pointer;
 }
 about-me button {
     font-size: 1rem;
@@ -255,10 +268,18 @@ about-me button {
     border-radius: 5px;
     margin-top: 25px;
 }
+about-me button a{
+    color: var(--background-text)
+}
 about-me button:hover,
 about-me button:focus,
 about-me button:active {
-    background-color: #757761;
+    background-color: var(--background-text);
+}
+about-me button:hover a,
+about-me button:focus a,
+about-me button:active a{
+    color: black;
 }
 about-me button.primair {
     background-color: var(--base-color);
