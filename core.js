@@ -8,3 +8,13 @@ while (references.item(i) != null){
     }
     i++;
 }
+previous = document.getElementsByTagName('previous');
+
+j = 0;
+
+while (previous.item(j) != null){
+    previous.item(j).onclick = function(){
+        this.classList.toggle('opened');
+    }
+    j++;
+}

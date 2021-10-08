@@ -4,7 +4,9 @@
     line-height: 16px;
     --base-color: #00AEEF;
     --background-color: #FCFBED;
-    --background-text: #757761;
+    --text-color: #757761;
+    --nav-color: #36558F;
+    --alert-color: #502419;
 }
 html,
 body {
@@ -14,6 +16,47 @@ body {
     background-color:var(--background-color);
     line-height: 1.875rem;
 }
+closing-circle {
+    height: 100%;
+    border-radius: 0 50% 50% 0;
+    position: absolute;
+}
+nav {
+    background-color: var(--nav-color);
+    height: 75px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+}
+nav a {
+    padding: 10px 20px;
+    color: white;
+}
+nav a p {
+    margin: 0;
+}
+nav a:hover {
+    background-color: #273E68;
+    border-radius: 5px;
+}
+nav a.active p{
+    border-bottom: 2px solid white;
+}
+nav portrait {
+    display: block;
+    height: 65px;
+    border: 10px solid var(--background-color);
+    border-radius: 50%;
+}
+
+nav.collapsed {
+    width: -moz-fit-content;
+    width: fit-content;
+    position: absolute;
+    border-radius: 0 500px 500px 0;
+}
+main,
 article,
 intro {
     display: block;
@@ -22,14 +65,23 @@ intro {
     padding: 25px 50px;
     box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    main,
+    intro {
+        padding: 25px;
+    }
+}
 intro {
-    color: var(--background-text);
+    color: var(--text-color);
 }
 article {
     background-color: white;
     position: relative;
     border-radius: 0px 0px 5px 5px;
+    margin-bottom: 50px;
 }
+featured-image,
 header-image {
     display: block;
     width: 100%;
@@ -37,6 +89,7 @@ header-image {
     background-color: #757761;
     position: relative;
 }
+featured-image img,
 header-image img {
     width: 100%;
     height: 100%;
@@ -58,7 +111,7 @@ credit {
 credit a {
     color: white;
 }
-@media (max-width: 899px) {
+@media (max-width: 768px) {
     header-image {
         height: 250px;
     }
@@ -75,13 +128,31 @@ h1 {
     text-overflow: ellipsis;
     white-space: pre-line;
 }
+section-header {
+    display: flex;
+    width: 100%;
+    column-gap: 25px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    section-header {
+        flex-wrap: wrap;
+    }
+}
+section-header blob cross-link {
+    height: 30px;
+}
 h2 {
     font-size: 2.063rem;
     line-height: 2.636rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: pre-line;
+    break-word: word-break;
 }
+blog-title,
+project-title,
+function-title,
+academic-title,
+contact-title,
 name,
 h3 {
     font-size: 1.625rem;
@@ -93,10 +164,59 @@ a {
 }
 dot {
     border-radius: 50%;
-    background-color: var(--background-text);
+    background-color: var(--text-color);
     height: 15px;
     width: 15px;
     border: 10px solid var(--background-color);
+}
+blobs,
+action-row,
+tags {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    column-gap: 5px;
+    margin-top: 5px;
+}
+action-row {
+    margin-left: auto;
+    margin-top: auto;
+}
+blob {
+    border-radius: 500px;
+    height: 30px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    float: left;
+}
+blob logo {
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+    border: 2px solid var(--background-color); 
+    border-radius: 50%;
+    margin-right: -5px;
+}
+blob date-published,
+blob reading-time,
+blob organization,
+blob date {
+    padding: 0 10px;
+    font-size: 0.75rem;
+}
+blob [class^="icon-"],
+blob [class*=" icon-"] {
+    margin-right: 5px;
+}
+@media (max-width: 768px) {
+    
+    tag {
+        margin-bottom: 5px;
+    }
 }
 side-bar {
     display: block;
@@ -108,10 +228,10 @@ side-bar {
     padding: 10px;
     box-sizing: border-box;
     margin-top: -40px;
-    color: var(--background-text);
+    color: var(--text-color);
 }
 side-bar a {
-    color: var(--background-text);
+    color: var(--text-color);
 }
 side-bar dot {
     position: absolute;
@@ -145,6 +265,9 @@ reference.opened dropout{
 reference.opened dropout a {
     text-decoration: underline;
     color:var(--base-color);
+}
+previous.opened dropout {
+    display: block;
 }
 info icon,
 asterisk icon {
@@ -215,7 +338,407 @@ list-item {
     list-style-type: decimal;
     margin-left: 25px;
 }
-about-me {
+.greeting {
+    height: 750px;
+    display: flex;
+    overflow: hidden;
+    background-color: var(--base-color);
+    align-items: center;
+    justify-content: space-between;
+}
+greeting {
+    display: block;
+}
+greeting card {
+    overflow: hidden;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+@media (max-width: 768px) {
+    greeting card {
+        width: 90%;
+        flex-wrap: wrap;
+        position: relative;
+    }
+}
+greeting portrait {
+    height: 800px;
+    width: 800px;
+    display: block;
+    margin-left: -300px;
+}
+@media (max-width: 768px) {
+    greeting portrait{
+        width: 160%;
+        height: auto;
+        margin-left: 0;
+    }
+
+}
+greeting wrapper {
+    width: 450px;
+    display: block;
+    text-align: right;
+    margin-right: 50px;
+}
+
+@media (max-width: 768px) {
+    greeting wrapper {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+}
+greeting name{
+    font-size: 6rem;
+    line-height: 6rem;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    greeting name {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+}
+greeting ul, greeting li {
+    list-style: none;
+    padding: 0;
+}
+greeting ul li ul li {
+    float: left;
+}
+
+@media (max-width: 768px) {
+    greeting ul li ul li {
+        line-height: 1.25rem;
+    }
+    greeting ul:first-child > li {
+        margin-top: 15px;
+    }
+}
+
+greeting ul li span {
+    float: left;
+    margin-right: 10px;
+}
+
+greeting wrapper wrapper {
+    text-align: left;
+    margin: 0 0 0 75px;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+    greeting wrapper wrapper{
+        margin: 0;
+    }
+}
+greeting ul li ul li + li::before {
+    content: '/';
+    padding: 0 5px;
+}
+greeting li {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+greeting li,
+greeting name {
+    color: var(--base-color);
+}
+card {
+    display: flex;
+    max-width: 900px;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 50px;
+    margin: 25px auto;
+    border-radius: 5px;
+    position: relative;
+}
+@media (max-width: 768px) {
+    card {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+}
+a card {
+    transition: box-shadow 0.5s;
+}
+a card:hover {
+    box-shadow: 0 0 10px #333;
+    transition: box-shadow 0.5s;
+}
+mission-card {
+    max-width: 900px;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 50px;
+    margin: 25px auto;
+    border-radius: 5px;
+    position: relative;
+    display: block;
+}
+mission-card + h1 {
+    margin-top: 140px;
+}
+mission-card top-row{
+    position: relative;
+    display: block;
+} 
+mission-card top-row h2 {
+    width: 75%;
+    margin-top: 0;
+}
+mission-card top-row illustration{
+    width: 350px;
+    position: absolute;
+    bottom: -25px;
+    right: -175px;
+}
+
+@media (max-width: 768px) {
+    mission-card top-row h2 {
+        width: 100%
+    }
+    mission-card top-row illustration {
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }
+}
+card.recruit {
+    color: white;
+    background-color: var(--base-color);
+}
+previous card {
+    max-width: 720px;
+}
+related-cards {
+    max-width: 900px;
+    margin: 25px auto;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+@media (max-width: 768px) {
+    related-cards {
+        max-width: 100%;
+    }
+}
+previous related-cards {
+    max-width: 720px;
+}
+related-cards linkage {
+    width: 34px;
+    height: 61px;
+    border-bottom: 5px dotted var(--base-color);
+    border-left: 5px dotted var(--base-color);
+    position: relative;
+    margin: 0 auto 0 25px;
+}
+related-cards linkage span {
+    background-color: var(--background-color);
+    position: absolute;
+    left: -17px;
+    bottom: -17px;
+    font-size: 1.5rem;
+    padding: 5px;
+    border-radius: 50%;
+    color: var(--base-color);
+}
+related-cards card {
+    margin: 0 auto 12.5px auto;
+    width: 100%;
+}
+@media (max-width: 768px) {
+    related-cards card {
+        max-width: 100%;
+    }
+}
+related-cards card.related {
+    border-left: 5px solid var(--base-color);
+    margin-top: -66px;
+    margin-left: 75px;
+}
+card wrapper > organization {
+    font-size: 1rem;
+    display: inline-block;
+}
+grid card wrapper project-title {
+    display: inline-block;
+}
+card wrapper project-title,
+card wrapper function-title,
+card wrapper academic-title {
+    display: block;
+    word-break: break-word;
+}
+card.related wrapper project-title,
+card.related wrapper function-title,
+card.related wrapper academic-title {
+    display: inline-block;
+}
+spotlight-blog {
+    margin: 0 -20%;
+    display: block;
+}
+@media (max-width: 768px) {
+    spotlight-blog {
+        margin: 0;
+    }
+}
+spotlight-blog section-header {
+    max-width: 800px;
+    margin: auto;
+}
+greeting card,
+spotlight-blog card {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+spotlight-blog card wrapper {
+    margin-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+spotlight-blog featured-image {
+    width: 40%;
+    flex-shrink: 0;
+    margin: -50px;
+}
+
+spotlight-blog featured-image,
+spotlight-blog featured-image img {
+    border-radius: 5px 0px 0px 5px;
+}
+@media (max-width: 768px) {
+    spotlight-blog featured-image{
+        position: absolute;
+        width: 100%;
+        height: 250px;
+    }
+    spotlight-blog featured-image,
+    spotlight-blog featured-image img {
+        border-radius: 5px 5px 0px 0px;
+    }
+    spotlight-blog card wrapper {
+        margin-top: 250px;
+        margin-left: 0;
+        width: 100%;
+    }
+}
+quote {
+text-align: right;
+margin-left: 25px;
+}
+
+@media (max-width: 768px) {
+    quote {
+        width: 100%;
+        margin-left: 0;
+        text-align: left;
+    }
+}
+quote p {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--base-color);
+}
+quote p + blob cross-link {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+current,
+recently-finished {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 25px;
+    width: 100%;
+    padding: 12.5px 0;
+}
+grid related-cards,
+grid card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 12.5px 0;
+}
+related-cards.two-third,
+card.two-third {
+    max-width: 475px;
+}
+related-cards.half,
+card.half {
+    max-width: 400px;
+}
+related-cards.third,
+card.third{
+    max-width: 325px;
+}
+@media (max-width: 768px) {
+    grid related-cards,
+    grid card,
+    related-cards.two-third,
+    card.two-third,
+    related-cards.half,
+    card.half,
+    related-cards.third,
+    card.third {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+}
+blob cross-link {
+    font-size: 1rem;
+    display: inline-block;
+    background-color: var(--nav-color);
+    padding: 0 10px;
+    border-radius: 500px;
+    color: white;
+}
+blob cross-link.nocolor {
+    background-color: white;
+    color: var(--nav-color);
+}
+blob cross-link:hover{
+    cursor: pointer;
+    background-color: #273E68;
+}
+blob cross-link.nocolor:hover {
+    color: white;
+}
+blob cross-link a {
+    color: white;
+    font-weight: 300;
+}
+tag {
+    font-size: 1rem;
+    font-weight: 300;
+    display: inline-block;
+    background-color: var(--alert-color);
+    padding: 0px 10px;
+    border-radius: 500px;    
+    color: white;
+}
+about-me,
+contact-me {
     display: flex;
     max-width: 720px;
     box-sizing: border-box;
@@ -224,34 +747,41 @@ about-me {
     margin: 50px auto;
     border-radius: 5px;
 }
-@media (max-width: 499px) {
-    about-me {
-        flex-direction: column;
+@media (max-width: 768px) {
+    about-me,
+    contact-me {
+        flex-wrap: wrap;
+        max-width: 80%;
     }
 }
+organization logo,
 about-me portrait {
     height: 100px;
     width: 100px;
     display: block;
-    background-color: #757761;
+    background-color: white;
     float: left;
     border-radius: 50%;
     margin-right: 25px;
     margin-bottom: 25px;
     flex-grow: 0;
     flex-shrink: 0;
+    font-size: 0.5rem;
 }
-about-me portrait img {
+logo img,
+portrait img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
     border-radius: 50%;
 }
-about-me bio {
+about-me bio,
+contact-me description {
     display: block;
 }
-about-me name {
+about-me name,
+contact-me contact-title {
     display: block;
     font-weight: 700
 }
@@ -259,8 +789,6 @@ button {
     background: none;
     border: none;
     cursor: pointer;
-}
-about-me button {
     font-size: 1rem;
     font-family: 'Roboto Slab', serif;
     font-weight: 300;
@@ -268,34 +796,59 @@ about-me button {
     border-radius: 5px;
     margin-top: 25px;
 }
-about-me button a{
-    color: var(--background-text)
+button a{
+    color: var(--text-color)
 }
-about-me button:hover,
-about-me button:focus,
-about-me button:active {
-    background-color: var(--background-text);
+button:hover,
+button:focus,
+button:active {
+    background-color: var(--text-color);
 }
-about-me button:hover a,
-about-me button:focus a,
-about-me button:active a{
+button:hover a,
+button:focus a,
+button:active a{
     color: black;
 }
-about-me button.primair {
+button.more,
+button.primair {
     background-color: var(--base-color);
-}
-about-me button.primair:hover,
-about-me button.primair:focus,
-about-me button.primair:active {
-    background-color: #006991;
-}
-about-me button.primair a {
     color: white;
 }
+button.more:hover,
+button.more:focus,
+button.more:active,
+button.primair:hover,
+button.primair:focus,
+button.primair:active {
+    background-color: #006991;
+    color: white;
+}
+button.primair a {
+    color: white;
+}
+illustration {
+    width: 400px;
+    float: right;
+}
+illustration.left{
+    float: left;
+}
+illustration img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    illustration,
+    illustration.left {
+        float: none;
+        display: block;
+    }
+}
+
 footer {
     background-color: var(--base-color);
     width: 100%;
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
