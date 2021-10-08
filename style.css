@@ -178,6 +178,9 @@ tags {
     column-gap: 5px;
     margin-top: 5px;
 }
+blobs tags {
+    margin-top: 0;
+}
 action-row {
     margin-left: auto;
     margin-top: auto;
